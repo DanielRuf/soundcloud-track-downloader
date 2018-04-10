@@ -1,15 +1,32 @@
 {
   "name": "soundcloud-track-downloader",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "soundcloud",
+    "soundcloud-api",
+    "soundcloud-downloader",
+    "soundcloud-music-downloader",
+    "soundcloud-stream",
+    "music",
+    "download"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "node-id3": "^0.1.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielRuf/soundcloud-track-downloader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DanielRuf/soundcloud-track-downloader/issues"
+  },
+  "homepage": "https://github.com/DanielRuf/soundcloud-track-downloader#readme",
+  "description": "download all public tracks of a SoundCloud account"
 }
