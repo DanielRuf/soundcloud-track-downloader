@@ -31,7 +31,7 @@ function getRealUserUrl() {
       resp.on('end', () => {
         const response = JSON.parse(data)
         if (typeof response === 'object') {
-          resolve(response.location);
+          resolve(response.location)
         } else {
           reject()
         }
@@ -62,7 +62,7 @@ async function fetchAllTracks(url) {
         let iterations_i = 0
         const limit = 200
         while (iterations_i != iterations) {
-          const offset = iterations_i * limit;
+          const offset = iterations_i * limit
           if (typeof response === 'object') {
             await fetchTracks(API_ENDPOINT + '/users/' + userid + '/tracks.json?limit=' + limit + '&offset=' + offset + '&client_id=' + client_id)
           }
@@ -101,10 +101,9 @@ async function fetchTracks(url) {
 
     }).on('error', (err) => {
       console.log('Error: ' + err.message)
-      reject()
+      reject(err)
     })
   })
-
 }
 
 async function processTracks(tracks) {
@@ -117,17 +116,17 @@ async function processTracks(tracks) {
     const username_soundcloud = track.user.username
     let title_track = track.title
     const title_track_original = title_track
-    title_track = title_track.replace(/\\\\/g, "-")
-    title_track = title_track.replace(/\//g, "-")
-    title_track = title_track.replace(/:/g, "-")
-    title_track = title_track.replace(/\*/g, "-")
-    title_track = title_track.replace(/\?/g, "-")
-    title_track = title_track.replace(/'/g, "-")
-    title_track = title_track.replace(/"/g, "-")
+    title_track = title_track.replace(/\\\\/g, '-')
+    title_track = title_track.replace(/\//g, '-')
+    title_track = title_track.replace(/:/g, '-')
+    title_track = title_track.replace(/\*/g, '-')
+    title_track = title_track.replace(/\?/g, '-')
+    title_track = title_track.replace(/'/g, '-')
+    title_track = title_track.replace(/"/g, '-')
     const id = track.id
 
-    const mp3_filename = file_number + "_" + username_soundcloud + " - " + title_track + ".mp3";
-    const mp3_id3filename = file_number + "_" + username_soundcloud + " - " + title_track + "_id3.mp3";
+    const mp3_filename = file_number + '_' + username_soundcloud + ' - ' + title_track + '.mp3'
+    const mp3_id3filename = file_number + '_' + username_soundcloud + ' - ' + title_track + '_id3.mp3'
     await getTrackStream(id, mp3_filename, tracks_count_current, tracks_count, username_soundcloud, title_track_original)
     i++
   }
@@ -154,9 +153,8 @@ function getTrackStream(id, mp3_filename, tracks_count_current, tracks_count, us
 
     }).on('error', (err) => {
       console.log('Error: ' + err.message)
-      reject()
+      reject(err)
     })
-
   })
 }
 

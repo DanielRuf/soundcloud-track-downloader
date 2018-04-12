@@ -5,6 +5,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "soundcloud-track-downloader": "./bin/soundcloud-track-downloader.js"
+  },
+  "preferGlobal": true,
   "keywords": [
     "soundcloud",
     "soundcloud-api",
