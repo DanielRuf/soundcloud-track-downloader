@@ -5,7 +5,12 @@ const NodeID3 = require('node-id3')
 const pkg = require('./package.json')
 
 const API_ENDPOINT = 'https://api.soundcloud.com'
-const client_id = '8ZKtZaVS9w4sW4d69O3bWMQSDglPH2vL'
+const client_id = !!process.argv[3]
+                  ? process.argv[3]
+                  : fs.existsSync('./.soundcloudrc')
+                    ? fs.readFileSync('./.soundcloudrc')
+                    : 'ZK1PFak9B2aJ1OTFowuzncoHAJvPoUsQ'
+
 const username = process.argv[2]
 let file_number = 0
 let all_public_tracks = []
