@@ -4,8 +4,16 @@
 
 ## Installation
 
-`npm i -g soundcloud-track-downloader`
+`yarn global add soundcloud-track-downloader`
 
 ## Usage
 
 `soundcloud-track-downloader celldweller`
+
+## client_id configuration
+
+If the current client_id does not work you can easily get a new one. If you have a new one, you can set it with the following solutions:
+
+`soundcloud-track-downloader username [client_id]`
+
+`echo client_id > .soundcloudrc && soundcloud-track-downloader username`
