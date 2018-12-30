@@ -4,7 +4,7 @@
 
 ## Installation
 
-`yarn global add soundcloud-track-downloader`
+`yarn global add danielruf/soundcloud-track-downloader`
 
 ## Usage
 
