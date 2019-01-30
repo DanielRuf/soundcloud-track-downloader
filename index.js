@@ -140,7 +140,7 @@ async function processTracks(tracks) {
 }
 
 function getTrackStream(id, mp3_filename, tracks_count_current, tracks_count, username_soundcloud, title_track_original) {
-  return new Promise((resolve, reject) => {
+ return new Promise((resolve, reject) => {
     https.get(API_ENDPOINT + '/tracks/' + id + '/stream?client_id=' + client_id, (resp) => {
       let data = ''
 
@@ -150,9 +150,22 @@ function getTrackStream(id, mp3_filename, tracks_count_current, tracks_count, us
 
       resp.on('end', async () => {
         const response = JSON.parse(data)
+        const file ='./' + mp3_filename;
+        //check if file exists before attempting to download it again
         if (typeof response === 'object') {
-          await downloadTrackStream(response.location, mp3_filename, tracks_count, tracks_count_current, username_soundcloud, title_track_original)
-          resolve()
+          try {
+            if (fs.existsSync(file)) {
+              //file exists --> move to next track
+              process.stdout.write(' Skipping an existing track ' + tracks_count_current + ' of ' + tracks_count + ' \n')
+              resolve()
+            }else{
+              await downloadTrackStream(response.location, mp3_filename, tracks_count, tracks_count_current, username_soundcloud, title_track_original)
+              resolve()
+            }
+          } catch(err) {
+            console.error(err)
+          }
+         
         }
       })
 
