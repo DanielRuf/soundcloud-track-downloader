@@ -9,7 +9,7 @@ const client_id = !!process.argv[3]
                   ? process.argv[3]
                   : fs.existsSync('./.soundcloudrc')
                     ? fs.readFileSync('./.soundcloudrc')
-                    : 'HzEllmdjxRaeJ4LHu62ED4YKXrx4ji1v'
+                    : 'zfZfdO1GXQUWjZ7WE3aqb6WWDzF5csC7'
 
 const username = process.argv[2]
 let file_number = 0
